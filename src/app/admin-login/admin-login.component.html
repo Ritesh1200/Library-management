@@ -1,0 +1,107 @@
+<style>
+  body,html{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #23364b;
+  }
+
+  *{
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box ;
+    -moz-box-sizing: border-box;
+  }
+
+  h2{
+  font-size: 3rem;
+  margin: 0;
+  padding: 20px;
+  background-color:black;
+  color: whitesmoke;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+
+
+
+
+}
+
+.wrap{
+  background:url('./assets/images/adminbg.jpg') ;
+  min-height: 580px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.container{
+  position: absolute;
+  right: 5px;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background: #fff;
+  border-radius:10px ;
+
+
+}
+
+input[type=text],input[type=password]{
+  width: 100%;
+  padding: 13px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  font-size: 15px;
+
+
+}
+.btn{
+  background: #4caf50;
+  padding: 13px 20px;
+  color: #fff;
+  font-size: 16px;
+   font-weight: bold;
+   width: 100%;
+   border: none;
+
+
+}
+
+
+.btn:hover{
+  background: #333;
+
+}
+a{
+  text-decoration: none;
+
+}
+
+a:hover{
+  text-decoration: underline;
+}
+</style>
+<h2>Admin login Form</h2>
+<div class="wrap">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" style="  font-family: 'Baloo Bhai', cursive;">
+    <div class="container">
+      <h1>
+         LogIn
+      </h1>
+      <hr>
+      <label for="Id"><b>Admin-Id</b></label>
+      <input type="text" placeholder="Enter Admin id" formControlName="admin_id" >
+      <label for="password"><b>Admin-Password</b></label>
+<input type="password" placeholder="enter password" formControlName="password" >
+<button type="submit" class="btn">LogIn</button>
+<div class="text-danger" *ngIf="this.resp">{{this.resp}} </div>
+    </div>
+  </form>
+
+</div>

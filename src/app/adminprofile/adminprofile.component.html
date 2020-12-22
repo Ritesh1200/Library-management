@@ -1,0 +1,175 @@
+<style>
+  body {
+     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  * {
+     box-sizing: border-box;
+  }
+  .card {
+     color: white;
+     float: left;
+     width: calc(25% - 20px);
+     padding: 10px;
+     border-radius: 10px;
+     margin: 10px;
+     height: 160vh;
+     width: 97.7vw;
+  }
+  .card p {
+     font-size: 18px;
+  }
+  .cardContainer:after {
+     content: "";
+     display: table;
+     clear: both;
+  }
+  @media screen and (max-width: 600px) {
+     .card {
+        width: 96%;
+
+    height: inherit;
+     }
+     .button{
+        width: 100%;
+     }
+
+     .table
+     {
+        height: 100%;
+     }
+  }
+
+  /* @media screen and (min-width: 200px) {
+     .card {
+        width: 96%;
+     }
+     .button{
+        width: 100%;
+     }
+  } */
+
+
+  @media (min-width: 576px){
+form-inline .form-control {
+    display: inline-block;
+    width: 69vh;
+    vertical-align: middle;
+}
+
+
+
+  }
+
+
+  form-inline .form-control {
+    display: inline-block;
+    width: 69vh;
+    vertical-align: middle;
+}
+</style>
+
+
+<div class="cardContainer">
+
+
+<div class="card" style="background-color:rgba(187, 255, 227, 0.932);">
+   <button style="margin:right; width: 95px;" class="btn btn-primary" type="submit"><a class="
+      btn btn-primary " (click) = "logout()">LogOut</a></button>
+
+      <nav class="navbar">
+        <form class="form-inline my-2 my-lg-0" style="margin-left: auto; margin-right: auto; text-align: center; justify-content: center;" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <input class="form-control mr-sm-2" type="search" formControlName = "student_id" placeholder="Enter student id" aria-label="Search" id="search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+      </nav>
+
+<table width="50%"  class="table table-dark" border="2px solid black;" style="width: 30%; margin-left: auto; margin-right: auto;">
+
+
+  <tbody width="100%">
+    <!-- <tr>
+      </tr> -->
+    <tr >
+
+        <td width="50%">Admin Name</td>
+        <td width="50%">{{name}}</td>
+    </tr>
+
+   <tr>
+       <td> Admin Email</td>
+       <td>{{email}}</td>
+   </tr>
+   <tr>
+     <td>Admin Id</td>
+     <td>{{admin_id}}</td>
+ </tr>
+   <tr>
+      <td>Gender</td>
+      <td>{{gender}}</td>
+  </tr>
+  <tr>
+   <td>Phone No</td>
+   <td>{{phone}}</td>
+</tr>
+
+<tr>
+   <td>
+   <button class="btn btn-primary" (click) = "book()" style="    margin-left: 0px;
+              margin-top: 10px;
+              width: 10vw;
+              ">Addbook</button>
+
+
+</td>
+
+
+   <td>   <button  class="btn btn-primary" (click)= "change()" style="margin-left: 100px;
+      margin-top: 8px;
+      width: 12vw;
+
+
+    ">Change Setting</button>
+    </td>
+</tr>
+
+</tbody>
+
+
+</table>
+
+<h1 style=" background-color: rgb(255, 168, 157); color: black; text-align: center; margin-top:30px; ">Student Book Details</h1>
+<table class="table table-dark" border="2px" style="margin-top:-8px; border-radius: 2px;">
+
+
+
+  <thead>
+    <tr style="background-color: #4CAF50; color: white;">
+      <th style="width: 15%;" scope="col">Book Name</th>
+      <th style="width: 15%;" scope="col">Category</th>
+      <th style="width: 15%;"scope="col">BookTaken Date </th>
+      <th style="width: 15%;"scope="col">BookSubmit Date</th>
+      <th style="width: 12.5%;"scope="col">Returned </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor = "let book of books">
+      <td>{{book.name}}</td>
+      <td>{{book.category}}</td>
+      <td>{{book.date}}</td>
+      <td>{{book.date}}</td>
+      <td><p id = "returned"> {{book.returned}}  </p>  <button (click)="change_text(book.id , book.name)" class="btn btn-primary" type="submit" style="    width: 100px;
+        height: 33px;
+    ">Submit</button></td>
+   </tr>
+
+
+  </tbody>
+ </table>
+
+<!--
+</div>
+<div class="card" style="background-color:rgb(12, 126, 120);">
+<h2>Second card</h2>
+<p>Some text</p>
+</div> -->

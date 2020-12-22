@@ -1,0 +1,222 @@
+<style>
+  navbar{
+  padding-left: 10px;
+            }
+  .navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 2rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  padding-left: 1rem;
+  }
+  img {
+  vertical-align: middle;
+  border-style: none;
+  height: 60px;
+  width: 70px;
+  position: relative;
+  }
+
+
+
+  .box {
+  content: "";
+  width: 100%;
+  background-image: url(./assets/images/regis.jpg);
+  height: 87%;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: .7;
+  position: absolute;
+
+  }
+
+  .container{
+  width: 100%;
+  height: 86%;
+  }
+  /* Here Begin a Resposive Code */
+
+  @media (min-width: 992px){
+  .container, .container-lg, .container-md, .container-sm {
+  max-width: 960px;
+  }
+  }
+
+  @media (max-width: 991px){
+  .container, .container-md, .container-sm {
+  max-width: 869px;
+  margin-left: 24px;
+  }
+  }
+
+  @media (max-width: 668px){
+  .container, .container-md, .container-sm {
+  max-width: 869px;
+  margin-left: -99px;
+  }
+  }
+  @media (max-width: 524px){
+  .container, .container-md, .container-sm {
+  max-width: 829px;
+  margin-left: -144px;
+  }
+  .form-controt{
+  margin-left: -24px;
+  }
+  }
+
+  @media (max-width: 696px){
+  .container, .container-md, .container-sm {
+
+  margin-left: -67px;
+  }
+  }
+
+  @media (max-width: 844px){
+  .container, .container-md, .container-sm {
+  max-width: 869px;
+  margin-left: -44px;
+  }
+  }
+  @media (max-width: 624px){
+  .container, .container-md, .container-sm {
+  max-width: 869px;
+  margin-left: -86px;
+  }
+  .h1, h1 {
+  font-size: 2.5rem;
+  width: 313px;
+  }
+  .form-controt{
+  margin-left: -59px;
+  }
+  }
+
+  @media (max-width: 386px){
+  .container, .container-md, .container-sm {
+  max-width: 869px;
+  margin-left: -146px;
+  }
+
+
+
+
+  }
+
+  @media (max-width: 624px){
+  .h1, h1 {
+  font-size: 2.5rem;
+  width: 313px;
+  margin-left: -96px;
+  }
+  }
+
+  @media screen and (max-width: 493px) {
+  .form-controt{
+  margin-left: -50px;
+  }
+
+  }
+  @media screen  and (max-width: 453px){
+
+
+  .text-form{
+
+  margin-left: -176px;
+  padding-left: 83px;
+  }
+  }
+
+  @media screen  and (max-width: 1500px){
+
+
+  .box{
+   height: 300%;
+  }
+  .button{
+    margin-left: 30px;
+  }
+  }
+
+  </style>
+      <div class="box">
+        <br> <br><br>
+        <div class="container">
+        <div class="box1" style="  width: 52%;
+        margin-left: 235px;
+        height: 88%;
+
+      box-shadow: 0px 10px 10px;
+
+     ">
+
+            <h1 class="h1"style="text-align: center; font-size: 30px; color: white; ">Add a new book</h1><br>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" style="  font-family: 'Baloo Bhai', cursive;">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Name of book</label>
+                  <input type="text" placeholder="Enter NewName Here.." formControlName="name" class="form-control" />
+                  <div *ngIf="(registrationForm.get('name').errors || isSubmitted) && (registrationForm.get('name').dirty || registrationForm.get('name').touched)">
+                      <span class="text-danger"></span>
+
+
+                  <div *ngIf="registrationForm.get('name').hasError('required')">
+                    <span class="text-danger">Book name is required</span>
+                  </div>
+
+                  <div *ngIf=" (registrationForm.get('name').hasError('maxlength')) || (registrationForm.get('name').hasError('minlength'))">
+                    <span class="text-danger">Book name is not valid</span>
+                  </div>
+                </div>
+                </div>
+
+                  <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" placeholder="Enter New User Id Here.." formControlName="category" class="form-control" />
+                    <div *ngIf="(registrationForm.get('category').errors ) && (registrationForm.get('category').dirty || registrationForm.get('category').touched)">
+                      <span class="text-danger"></span>
+
+                    <div *ngIf="( registrationForm.get('category').hasError('required')) ">
+                      <span class="text-danger">Book category  is required</span>
+                    </div>
+
+                     <div *ngIf="(registrationForm.get('category').hasError('minlength') || registrationForm.get('category') .hasError('maxlength'))">
+                     <span class="text-danger">Category is not valid </span>
+                    </div>
+                  </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label>Author</label>
+                      <input type="text" placeholder="Enter Author name Here.." formControlName="author" class="form-control" />
+                      <div *ngIf="(registrationForm.get('author').errors ) && (registrationForm.get('author').dirty || registrationForm.get('author').touched)">
+
+
+                      <div *ngIf="( registrationForm.get('author').hasError('required')) ">
+                        <span class="text-danger">Author name  is required</span>
+                      </div>
+
+                       <div *ngIf="(registrationForm.get('author').hasError('minlength') || registrationForm.get('author') .hasError('maxlength'))">
+                       <span class="text-danger">Author Name is not valid </span>
+                      </div>
+                    </div>
+
+                      </div>
+
+                  <button  type="submit" class="btn btn-primary"  style="    margin-left: 0px;
+
+              ">Submit</button>
+                <div *ngIf="responce"> {{responce}}</div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

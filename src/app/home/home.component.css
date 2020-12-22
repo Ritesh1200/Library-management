@@ -1,0 +1,97 @@
+
+/* Navbar here */
+navbar{
+    padding-left: 10px;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 2rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    padding-left: 1rem;
+}
+      /* here  navbar image */
+        img {
+    vertical-align: middle;
+    border-style: none;
+    height: 60px;
+    width: 70px;
+}
+
+/* here bgimage */
+#home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+flex-direction: column;
+padding: 3px 200px;
+}
+
+#home::before{
+  content: "";
+  width: 100%;
+  position: absolute;
+  
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: .6;
+ 
+  
+}
+
+footer
+{
+  height: 188px;
+width: 100%;
+margin-top: 160px;
+  background-color: black;
+}
+
+
+  .fa
+  {
+    margin: 0px 5px;
+    padding: 5px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+  }
+  .fa:hover
+  {
+    opacity: .7;
+  }
+  .fa-facebook
+  {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-twitter
+  {
+    background: #55ACEE;
+    color: white;
+  }
+  .fa-google
+  {
+    background: #dd4b39;
+    color: white;
+  }
+  .fa-instagram
+  {
+    background: #125688;
+    color: white;
+  }
+  .fa-yahoo
+  {
+    background: #400297;
+    color: white;
+  }
+
+    

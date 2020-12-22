@@ -1,0 +1,230 @@
+var express = require('express');
+var schema = require('../models/admin_schema');
+const bodyparser = require('body-parser');
+
+var router = express.Router();
+
+// Body-parser middleware 
+router.use(bodyparser.urlencoded({ extended: false }));
+router.use(bodyparser.json());
+
+// enter in database
+router.post('/' ,function(req , res , next) {
+   var password = req.body.password ;
+   var name = req.body.name ;
+   var admin_id = req.body.admin_id ;
+   var email = req.body.email ;
+   var phone_no = req.body.phone_no ;
+   var gender = req.body.gender ;
+
+   // check the form if it is empty
+   if(name == ''){
+      return res.end('please enter name') ;
+   }
+   if(password == ''){
+      return res.end('please enter password') ; 
+   }
+   if(admin_id == ''){
+      return res.end('please enter student id') ;
+   }
+   if(email == ''){
+      return res.end('please enter email') ;
+   }
+   if(phone_no == ''){
+      return res.end('please enter phone no') ;
+   }
+   if(gender == ''){
+      return res.end('please enter gender') ;
+   }
+
+   // student name must not have special charactor
+   var nameRegEx = /^[a-zA-Z\s]{2,20}$/
+   if(!nameRegEx.test(name)) {
+      return res.send({error:"please enter valid name"});
+
+   }
+
+   // password is too long or too short and not take special charactor (RegExp concept)
+   if( password.length < 8 || password.length > 20  || password.search(/[a-z]/) == -1 || password.search(/[A-Z]/) == -1 || password.search(/[0-9]/) == -1 ) {
+      return res.send({error:"please enter valid password"});
+
+   }
+
+   // student id conditions 
+   if(admin_id.length < 5 || admin_id.length > 10 ) {
+      return res.send({error:"please enter valid id"});
+
+   } 
+
+   // email condition
+   var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
+   if(!emailRegEx.test(email)) {
+      return res.send({error:"please enter valid email"});
+
+   }
+
+   // mobile no conditions
+   var mobileRegEx = /^[7-9][0-9]{9}$/ ;
+   if(!mobileRegEx.test(phone_no)) {
+      return res.send({error:"please enter valid phone no"});
+   }
+
+   // check for unique value then update
+   var valu = 1;
+   if (valu) {
+      schema.find({ admin_id: admin_id }, function (err, stu) {
+         if (err) throw err ;
+         if (stu.length!=0) {
+            return res.send({error:"this id is already taken"});
+         }
+         else {
+            schema.find({ phone_no: phone_no }, function (err, data) {
+               if (err) throw err;
+               if (data.length!=0) {
+                  return res.send({error:"this mobile no. is already taken"});
+               } 
+               else {
+                  schema.find({ email: email }, function (err, data) {
+                     if (err) throw err;
+                     if (data.length!=0) {
+                        return res.send({error:"this email is already taken"});
+                     }
+                     else {
+                        schema.create(req.body , function (err , admin) {
+                           if(err) throw err ;
+
+                           return res.json({value : admin, error : "no"}) ;
+                           
+                        })
+                     }
+                  })
+               }
+            })
+         }
+      })
+   }
+}) ;
+
+////////////////////// UPDATE /////////////////////////
+
+router.put('/:id' , function(req , res , next) {
+   console.log(req.body);
+   var password = req.body.password ;
+   var name = req.body.name ;
+   var admin_id = req.body.admin_id ;
+   var email = req.body.email ;
+   var phone_no = req.body.phone_no ;
+   var gender = req.body.gender ;
+
+   // check the form if it is empty
+   if(name == ''){
+      return res.send({error : "please enter name"}) ;
+   }
+   if(password == ''){
+      return res.send({error : "please enter password"}) ;
+   }
+   if(admin_id == ''){
+      return res.send({error : "please enter id"}) ;
+   }
+   if(email == ''){
+      return res.send({error : "please enter email"}) ;
+   }
+   if(phone_no == ''){
+      return res.send({error : "please enter phone no "}) ;
+   }
+   if(gender == ''){
+      return res.send({error : "please enter gender"}) ;
+   }
+
+   // student name must not have special charactor
+   var nameRegEx = /^[A-Z][a-zA-Z\s]{2,20}$/
+   if(!nameRegEx.test(name)) {
+      return res.send({error : "please enter valid name"}) ;
+   }
+
+   // password is too long or too short and not take special charactor (RegExp concept)
+   if( password.length < 8 || password.length > 20  || password.search(/[a-z]/) == -1 || password.search(/[A-Z]/) == -1 || password.search(/[0-9]/) == -1 ) {
+      return res.send({error : "please enter valid password"}) ;
+   }
+
+   // admin id conditions 
+   if(admin_id.length < 5 || admin_id.length > 10 ) {
+      return res.send({error : "please enter valid id"}) ;
+   } 
+
+   // email condition
+   var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
+   if(!emailRegEx.test(email)) {
+      return res.send({error : "please enter valid email"}) ;
+   }
+
+   // mobile no conditions
+   var mobileRegEx = /^[7-9][0-9]{9}$/ ;
+   if(!mobileRegEx.test(phone_no)) {
+      return res.send({error : "please enter valid phone no"}) ;
+   }
+
+   // creating variables
+   var adminid
+   var stundentno
+   var stundentemail 
+
+   schema.findById(req.params.id , function(err , data ) {
+      if(err) throw err ;
+
+      if(data.admin_id != admin_id) {
+          adminid  = true ;
+      }
+      if(data.email != email) {
+         stundentemail = true ;
+      }
+      if(data.phone_no != phone_no) {
+         stundentno = true ;
+      }
+   })
+
+
+   // check for unique value then update
+   schema.find({ admin_id: admin_id }, function (err, stu) {
+      if (err) throw err ;
+
+      if (adminid && stu.length != 0 ) {   
+         return res.send({error : "this id is already taken"}) ;
+      }
+      else{
+         schema.find({ phone_no: phone_no }, function (err, data) {
+            if (err) throw err;
+
+            if (stundentno && data.length != 0) {
+               return res.send({error : "this phone no  is already taken"}) ;
+            }
+            else {
+               schema.find({ email: email }, function (err, data) {
+                  if (err) throw err;
+
+                  if (stundentemail && data.length != 0) {
+                     return res.send({error : "this email id is already taken"}) ;
+  
+                  }
+                     else{
+                        schema.findByIdAndUpdate( req.params.id , req.body , {new: true}, function(err , admin) {
+                           if (err) throw err ;
+                                                
+                           return res.send({ value : admin , error : "no"}) ;
+                        })
+                        // we use {new : true }
+                        // an option that asks mongoose to return the updated version 
+                        // of the document instead of the pre-updated one.
+                     }
+               })
+            }
+         }) 
+                     
+         
+      }
+   })
+
+});
+
+module.exports = router ;
+
