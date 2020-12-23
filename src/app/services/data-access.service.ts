@@ -9,7 +9,7 @@ export class UserService {
   constructor(private http : HttpClient) {
   }
 
-  private root_url_student_register = 'http://localhost:3000/student_register' ;
+  private root_url_student_register = '/student_register' ;
   studentregister(post ):Observable<any> {
     console.log("this is post" , post);
     return this.http.post<any>(this.root_url_student_register , post) ;
