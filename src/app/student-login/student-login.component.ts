@@ -45,9 +45,11 @@ export class StudentLoginComponent implements OnInit {
 
     resp ;
     onSubmit() {
-
+      console.log("ppppppppppppp")
       this.UserService.studentlogin(this.registrationForm.value).subscribe( res => {
+        console.log("this is res" , res);
         if(res.error == "no"){
+
           this.router.navigate(["/user_profile"], { queryParams: { id:res.value._id } });
         }else{
           this.resp = res.error ;

@@ -46,11 +46,12 @@ app.use(session({
    }
 }));
 
+
 // cors
-// app.use(cors({
-//   origin : ['http://localhost:4200', 'http://127.0.0.1:4200'],
-//   credentials:true
-// }) ) ;
+app.use(cors({
+  origin : ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  credentials:true
+}) ) ;
 
 // initializing passport
 require("./routes/passport")
@@ -80,9 +81,6 @@ db.once('open', function(){
 app.use(bodyparser.urlencoded({extended:false})) ;
 app.use(bodyparser.json()) ;
 
-app.use(express.static(path.join(__dirname,'../dist/librarymanagementsystem')))
-
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -91,10 +89,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('*',(req,res)=>{
-  console.log("hellp")
+app.use(express.static(path.join(__dirname,'../dist/librarymanagementsystem')))
+app.get('/',(req,res)=>{
   res.sendFile(path.join(__dirname,'../dist/librarymanagementsystem/index.html'))
-  console.log("llll")
 })
 
 app.use('/index', indexRouter);

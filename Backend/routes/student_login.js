@@ -15,13 +15,13 @@ router.get('/', function(req ,res){
 })
 var token;
 router.get('/checker',(req,res)=>{
-   console.log(req.user);
+   console.log("this is user", req.user);
+   console.log("omgggggggggg")
    return res.send({value:req.user , error: "no"});
  })
  router.get('/wrong' ,(req , res , next)=>{
    return res.send({error: "enter correct password"});
  })
-
 router.post('/', studentpassport.authenticate('student',{
    successRedirect:"/student_login/checker",
    failureRedirect:"/student_login/wrong"

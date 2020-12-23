@@ -25,6 +25,7 @@ export class UserService {
 
   root_url_student_login = '/student_login' ;
   studentlogin(form):Observable<any> {
+    console.log("omgggggggggg hello bhai")
     return this.http.post<any>(this.root_url_student_login,form,{
       observe:'body',
       withCredentials:true

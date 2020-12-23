@@ -20,12 +20,12 @@ var which ;
       }
    ));
 
-   
+
 passport.serializeUser(function(user, done) {
-   console.log(user);
+  //  console.log(user);
    done(null, user._id);
  });
- 
+
 // passport.deserializeUser(function(id, done) {
 //    studentschema.findOne({_id:id},(err,data)=>{
 //       if(err){
@@ -34,9 +34,9 @@ passport.serializeUser(function(user, done) {
 //          done(null ,data );
 //       }
 //    })
-   
+
 // });
-   
+
 
    passport.use('admin' , new LocalStrategy({
       // setting admin_id name to username :)
@@ -61,7 +61,7 @@ passport.serializeUser(function(user, done) {
          if(err){
             console.log("passport error",err)
          }else{
-            console.log(user);
+            // console.log(user);
             done(null ,user );
          }
       })
@@ -70,10 +70,10 @@ passport.serializeUser(function(user, done) {
          if(err){
             console.log("passport error",err)
          }else{
-            console.log(user);
+            // console.log(user);
             done(null ,user );
          }
       })
    }
-      
+
    });

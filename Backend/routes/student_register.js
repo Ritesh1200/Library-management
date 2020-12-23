@@ -4,7 +4,7 @@ var schema = require('../models/student_schema') ;
 
 var router = express.Router() ;
 
-// Body-parser middleware 
+// Body-parser middleware
 router.use(bodyparser.urlencoded({extended:false})) ;
 router.use(bodyparser.json()) ;
 
@@ -23,7 +23,7 @@ router.post('/' ,function(req , res , next) {
       return res.send({error:"please enter name"}) ;
    }
    if(password == ''){
-      return res.send({error:"please enter password"}) ; 
+      return res.send({error:"please enter password"}) ;
    }
    if(student_id == ''){
       return res.send({error:"please enter student id"}) ;
@@ -51,11 +51,11 @@ router.post('/' ,function(req , res , next) {
 
    }
 
-   // student id conditions 
+   // student id conditions
    if(student_id.length < 5 || student_id.length > 10 ) {
       return res.send({error:"please enter valid student id"}) ;
 
-   } 
+   }
 
    // email condition
    var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
@@ -86,7 +86,7 @@ router.post('/' ,function(req , res , next) {
                if (data.length!=0) {
                   return res.send({error:"this mobile no. is already taken"}) ;
 
-               } 
+               }
                else {
                   schema.find({ email: email }, function (err, data) {
                      if (err) throw err;
@@ -97,6 +97,7 @@ router.post('/' ,function(req , res , next) {
                         schema.create(req.body , function (err , admin) {
                            if(err) throw err ;
                            var err = "no"
+                           console.log("hello bhai kesa h tu")
                            return res.send({value:admin , error: err}) ;
                         })
                      }
@@ -150,10 +151,10 @@ router.put('/:id' , function(req , res , next) {
       return res.send({error : "please enter valid password"}) ;
    }
 
-   // admin id conditions 
+   // admin id conditions
    if(student_id.length < 5 || student_id.length > 10 ) {
       return res.send({error : "please enter valid id"}) ;
-   } 
+   }
 
    // email condition
    var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
@@ -191,7 +192,7 @@ router.put('/:id' , function(req , res , next) {
    schema.find({ student_id: student_id }, function (err, stu) {
       if (err) throw err ;
 
-      if (stundentid && stu.length != 0 ) {   
+      if (stundentid && stu.length != 0 ) {
          return res.send({error : "this id is already taken"}) ;
       }
       else{
@@ -207,23 +208,23 @@ router.put('/:id' , function(req , res , next) {
 
                   if (stundentemail && data.length != 0) {
                      return res.send({error : "this email id is already taken"}) ;
-  
+
                   }
                      else{
                         schema.findByIdAndUpdate( req.params.id , req.body , {new: true}, function(err , student) {
                            if (err) throw err ;
-                                                
+
                            return res.send({ value : student , error : "no"}) ;
                         })
                         // we use {new : true }
-                        // an option that asks mongoose to return the updated version 
+                        // an option that asks mongoose to return the updated version
                         // of the document instead of the pre-updated one.
                      }
                })
             }
-         }) 
-                     
-         
+         })
+
+
       }
    })
 
