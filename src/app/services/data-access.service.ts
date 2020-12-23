@@ -15,7 +15,7 @@ export class UserService {
     return this.http.post<any>(this.root_url_student_register , post) ;
   }
 
-  private root_url_admin_login = 'http://localhost:3000/admin_login' ;
+  private root_url_admin_login = '/admin_login' ;
   adminlogin(form) {
     return this.http.post<any>(this.root_url_admin_login , form,{
       observe:'body',
@@ -23,7 +23,7 @@ export class UserService {
     }) ;
   }
 
-  root_url_student_login = 'http://localhost:3000/student_login' ;
+  root_url_student_login = '/student_login' ;
   studentlogin(form):Observable<any> {
     return this.http.post<any>(this.root_url_student_login,form,{
       observe:'body',
@@ -31,7 +31,7 @@ export class UserService {
     }) ;
   }
 
-  root_url_student_profile = 'http://localhost:3000/student_profile' ;
+  root_url_student_profile = '/student_profile' ;
   studentprofile(id):Observable<any> {
     return this.http.get<any>(this.root_url_student_profile +"/"+id,{
       observe:'body',
@@ -39,12 +39,12 @@ export class UserService {
     }) ;
   }
 
-  root_url_admint_profile = 'http://localhost:3000/admin_profile' ;
+  root_url_admint_profile = '/admin_profile' ;
   admintprofile(id):Observable<any> {
     return this.http.get<any>(this.root_url_admint_profile +"/"+id) ;
   }
 
-  root_url_logout = 'http://localhost:3000/logout' ;
+  root_url_logout = '/logout' ;
   logout():Observable<any> {
     return this.http.get<any>(this.root_url_logout ,{
       observe:'body',
@@ -52,42 +52,42 @@ export class UserService {
     }) ;
   }
 
-  root_url_admin_registration = 'http://localhost:3000/admin_register' ;
+  root_url_admin_registration = '/admin_register' ;
   adminregistration(body):Observable<any> {
     console.log("this is adminreg");
     return this.http.post<any>(this.root_url_admin_registration , body) ;
   }
 
-  root_url_student_change = 'http://localhost:3000/student_register' ;
+  root_url_student_change = '/student_register' ;
   studentchange(body , id):Observable<any> {
     return this.http.put<any>(this.root_url_student_change + "/"+id , body) ;
   }
 
-  root_url_admin_change = 'http://localhost:3000/admin_register' ;
+  root_url_admin_change = '/admin_register' ;
   adminchange(body , id):Observable<any> {
     return this.http.put<any>(this.root_url_admin_change + "/"+id , body) ;
   }
 
-  root_url_admin_search = 'http://localhost:3000/borrow' ;
+  root_url_admin_search = '/borrow' ;
   borrowsearch(id):Observable<any> {
     return this.http.get<any>(this.root_url_admin_search + "/"+id) ;
   }
 
-  root_url_returned = 'http://localhost:3000/return' ;
+  root_url_returned = '/return' ;
   returned(id , book):Observable<any> {
     return this.http.put<any>(this.root_url_returned + "/"+id , {book:book}) ;
   }
 
-  root_url_book = 'http://localhost:3000/book' ;
+  root_url_book = '/book' ;
   book():Observable<any> {
     return this.http.get<any>(this.root_url_book ) ;
   }
-  root_url_new_book = 'http://localhost:3000/book' ;
+  root_url_new_book = '/book' ;
   newbook(body):Observable<any> {
     return this.http.post<any>(this.root_url_book , body) ;
   }
 
-  root_url_borrow = 'http://localhost:3000/borrow' ;
+  root_url_borrow = '/borrow' ;
   borrow(id ,body):Observable<any> {
     return this.http.post<any>(this.root_url_borrow +"/"+id , body ) ;
   }
