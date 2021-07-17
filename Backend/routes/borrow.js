@@ -5,16 +5,23 @@ var schema_student = require('../models/student_schema');
 
 var router = express.Router() ;
 
-// Body-parser middleware 
+// Body-parser middleware
 router.use(bodyparser.urlencoded({extended:false})) ;
 router.use(bodyparser.json()) ;
 
-// get book borrowed by perticular 
+// get book borrowed by perticular
 router.get('/:id' , function(req , res , next) {
    schema.find({ id : req.params.id }, function(err , book) {
       if(err) throw err ;
 
-      res.send({value : book , error : "no"}) ;
+      // console.log("vfd" + book);
+      if(book == ""){
+
+        res.send({error : "not_found"});
+      }else{
+        console.log("vfd" );
+        res.send({value : book , error : "no"}) ;
+      }
    })
 });
 
@@ -52,10 +59,10 @@ router.post('/:id' ,function(req , res , next) {
             if(err) throw err ;
 
             return res.send({value : borrow , error : "no"}) ;
-         }) 
+         })
       }
    })
-   
+
 }) ;
 
 module.exports = router ;

@@ -1,4 +1,5 @@
 
+
 <style>
   navbar{
   padding-left: 10px;
@@ -27,7 +28,7 @@
   content: "";
   width: 100%;
   background-image: url(./assets/images/regis.jpg);
-  height: 130%;
+  height: 90%;
   z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,6 +36,10 @@
   opacity: .7;
   position: absolute;
 
+  }
+
+  label{
+    color: azure;
   }
 
   .container{
@@ -110,12 +115,20 @@
 
   }
 
-  @media (max-width: 624px){
+  /* @media (max-width: 624px){
   .h1, h1 {
   font-size: 2.5rem;
   width: 313px;
-  margin-left: -96px;
+  margin-left: -7px;
   }
+  } */
+
+  @media (max-width: 624px){
+.h1 {
+    font-size: 2.5rem;
+    width: 313px;
+    margin-left: -1px;
+}
   }
 
   @media screen and (max-width: 493px) {
@@ -134,16 +147,60 @@
   }
   }
 
+  @media screen  and (min-width:380px ){
+
+.box1{
+
+width: 52%;
+margin-left: 181px;
+height: 118%;
+box-shadow: 0px 10px 10px;
+
+}
+
+}
+@media screen  and (max-width:475px ){
+
+.box1{
+
+width: 52%;
+margin-left: 181px;
+height: 128%;
+box-shadow: 0px 10px 10px;
+
+}
+
+}
+
+@media screen and(min-width: 400px){
+h1, h2, h3, h4, h5, h6 {
+margin-top: 0;
+margin-left: -495px;
+margin-bottom: .5rem;
+}
+
+
+}
+
   @media screen  and (max-width: 1500px){
 
 
   .box{
-   height: 300%;
+   height: 125%;
   }
   .button{
     margin-left: 30px;
   }
   }
+
+  @media (max-width: 624px)
+{
+.h1[_ngcontent-sdk-c49] {
+    font-size: 2.5rem;
+    width: 313px;
+    margin-left: -82px;
+}
+}
 
   </style>
       <div class="box">
@@ -151,7 +208,7 @@
         <div class="container">
         <div class="box1" style="  width: 52%;
         margin-left: 235px;
-        height: 98%;
+        height:100%;
 
       box-shadow: 0px 10px 10px;
 
@@ -275,31 +332,31 @@
                       </div>
                     </div>
                       <div *ngIf="(registrationForm.get('phone_no').hasError('maxlength')&& registrationForm.get('phone_no').hasError('minlength'))"></div>
-                    <fieldset class="form-group">
+                      <fieldset class="form-group">
 
-                      <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-                        <div class="col-sm-10">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="Gender"  id="gridRadios1" value="option1" >
+                        <div class="row">
+                          <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                          <div class="col-sm-10">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" formControlName="gender"  id="gridRadios1" value="Male" >
 
-                            <label class="form-check-label" for="gridRadios1">
-                              Male    </label>
+                              <label class="form-check-label" for="gridRadios1">
+                                Male                      </label>
+
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio"  formControlName="gender"  id="gridRadios2" value="Female">
+                              <label class="form-check-label" for="gridRadios2">
+                                Female
+                              </label>
+                            </div>
+                            <div *ngIf="( isSubmitted) && registrationForm.get('gender').hasError('required')">
+                              <span class="text-danger">Gender is required</span>
+                            </div>
 
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio"  formControlName="Gender"  id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                              Female
-                            </label>
-                          </div>
-                          <div *ngIf="( isSubmitted) && registrationForm.get('Gender').hasError('required')">
-                            <span class="text-danger">Gender is required</span>
-                          </div>
-
                         </div>
-                      </div>
-                    </fieldset>
+                      </fieldset>
                 <button  type="submit" class="btn btn-primary"  style="    margin-left: 150px;">Submit</button>
                 <div class="text-danger" *ngIf="this.responce">{{this.responce}} </div>
 
@@ -309,6 +366,14 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
 
 
 

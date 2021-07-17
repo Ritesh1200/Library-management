@@ -4,7 +4,7 @@ const bodyparser = require('body-parser');
 
 var router = express.Router();
 
-// Body-parser middleware 
+// Body-parser middleware
 router.use(bodyparser.urlencoded({ extended: false }));
 router.use(bodyparser.json());
 
@@ -22,7 +22,7 @@ router.post('/' ,function(req , res , next) {
       return res.end('please enter name') ;
    }
    if(password == ''){
-      return res.end('please enter password') ; 
+      return res.end('please enter password') ;
    }
    if(admin_id == ''){
       return res.end('please enter student id') ;
@@ -50,11 +50,11 @@ router.post('/' ,function(req , res , next) {
 
    }
 
-   // student id conditions 
+   // student id conditions
    if(admin_id.length < 5 || admin_id.length > 10 ) {
       return res.send({error:"please enter valid id"});
 
-   } 
+   }
 
    // email condition
    var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
@@ -82,7 +82,7 @@ router.post('/' ,function(req , res , next) {
                if (err) throw err;
                if (data.length!=0) {
                   return res.send({error:"this mobile no. is already taken"});
-               } 
+               }
                else {
                   schema.find({ email: email }, function (err, data) {
                      if (err) throw err;
@@ -94,7 +94,7 @@ router.post('/' ,function(req , res , next) {
                            if(err) throw err ;
 
                            return res.json({value : admin, error : "no"}) ;
-                           
+
                         })
                      }
                   })
@@ -137,9 +137,10 @@ router.put('/:id' , function(req , res , next) {
    }
 
    // student name must not have special charactor
-   var nameRegEx = /^[A-Z][a-zA-Z\s]{2,20}$/
+   var nameRegEx = /^[a-zA-Z\s]{2,20}$/
    if(!nameRegEx.test(name)) {
-      return res.send({error : "please enter valid name"}) ;
+      return res.send({error:"please enter valid name"});
+
    }
 
    // password is too long or too short and not take special charactor (RegExp concept)
@@ -147,10 +148,10 @@ router.put('/:id' , function(req , res , next) {
       return res.send({error : "please enter valid password"}) ;
    }
 
-   // admin id conditions 
+   // admin id conditions
    if(admin_id.length < 5 || admin_id.length > 10 ) {
       return res.send({error : "please enter valid id"}) ;
-   } 
+   }
 
    // email condition
    var emailRegEx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/
@@ -167,7 +168,7 @@ router.put('/:id' , function(req , res , next) {
    // creating variables
    var adminid
    var stundentno
-   var stundentemail 
+   var stundentemail
 
    schema.findById(req.params.id , function(err , data ) {
       if(err) throw err ;
@@ -188,7 +189,7 @@ router.put('/:id' , function(req , res , next) {
    schema.find({ admin_id: admin_id }, function (err, stu) {
       if (err) throw err ;
 
-      if (adminid && stu.length != 0 ) {   
+      if (adminid && stu.length != 0 ) {
          return res.send({error : "this id is already taken"}) ;
       }
       else{
@@ -204,23 +205,23 @@ router.put('/:id' , function(req , res , next) {
 
                   if (stundentemail && data.length != 0) {
                      return res.send({error : "this email id is already taken"}) ;
-  
+
                   }
                      else{
                         schema.findByIdAndUpdate( req.params.id , req.body , {new: true}, function(err , admin) {
                            if (err) throw err ;
-                                                
+
                            return res.send({ value : admin , error : "no"}) ;
                         })
                         // we use {new : true }
-                        // an option that asks mongoose to return the updated version 
+                        // an option that asks mongoose to return the updated version
                         // of the document instead of the pre-updated one.
                      }
                })
             }
-         }) 
-                     
-         
+         })
+
+
       }
    })
 

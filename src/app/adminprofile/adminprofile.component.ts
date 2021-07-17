@@ -20,12 +20,18 @@ export class AdminprofileComponent implements OnInit {
   gender ;
   borrow ;
   id ;
-  change_text(id , book){
+  change_text(id , book , returned){
     console.log(id,book)
+    if(returned == 'no'){
     this.Userservice.returned(id , book).subscribe(res =>{
       this.Userservice.borrowsearch(this.registrationForm.value.student_id).subscribe(res => {
-        if(res.error == "no"){
+
+        if(res.error == "not_found"){
+          this.not_found = "Student not found" ;
+        }else if(res.error == "no"){
+          this.not_found = null ;
           this.books = res.value ;
+          console.log("vmui" + res.value);
         } else{
           this.router.navigate(["/admin_login"]);
         }
@@ -35,6 +41,7 @@ export class AdminprofileComponent implements OnInit {
     } , err => {
       console.log(err);
     })
+  }
   }
 
   spinner1:Subscription
@@ -79,10 +86,15 @@ export class AdminprofileComponent implements OnInit {
   }
 
   books ;
+  not_found ;
   onSubmit(){
     this.Userservice.borrowsearch(this.registrationForm.value.student_id).subscribe(res => {
-      if(res.error == "no"){
+      if(res.error == "not_found"){
+        this.not_found = "Student not found" ;
+      }else if(res.error == "no"){
+        this.not_found = null ;
         this.books = res.value ;
+        console.log("vmui" + res.value);
       } else{
         this.router.navigate(["/admin_login"]);
       }

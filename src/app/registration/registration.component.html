@@ -27,7 +27,7 @@
   content: "";
   width: 100%;
   background-image: url(./assets/images/regis.jpg);
-  height: 125%;
+  height: 90%;
   z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,6 +35,10 @@
   opacity: .7;
   position: absolute;
 
+  }
+
+  label{
+    color: azure;
   }
 
   .container{
@@ -148,7 +152,7 @@
 
 width: 52%;
 margin-left: 181px;
-height: 98%;
+height: 118%;
 box-shadow: 0px 10px 10px;
 
 }
@@ -160,7 +164,7 @@ box-shadow: 0px 10px 10px;
 
 width: 52%;
 margin-left: 181px;
-height: 98%;
+height: 128%;
 box-shadow: 0px 10px 10px;
 
 }
@@ -181,12 +185,21 @@ margin-bottom: .5rem;
 
 
   .box{
-   height: 300%;
+   height: 125%;
   }
   .button{
     margin-left: 30px;
   }
   }
+
+  @media (max-width: 624px)
+{
+.h1[_ngcontent-sdk-c49] {
+    font-size: 2.5rem;
+    width: 313px;
+    margin-left: -82px;
+}
+}
 
   </style>
       <div class="box">
@@ -194,13 +207,13 @@ margin-bottom: .5rem;
         <div class="container">
         <div class="box1" style="  width: 52%;
         margin-left: 235px;
-        height: 92%;
+        height:100%;
 
       box-shadow: 0px 10px 10px;
 
      ">
 
-            <h1 class="h1"style="text-align: center; font-size: 30px; color: white; ">User Registration Form</h1><br>
+            <h1 class="h1"style="text-align: center; font-size: 30px; color: white; ">Registration Form</h1><br>
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" style="  font-family: 'Baloo Bhai', cursive;">
               <div class="col-sm-12">
 
@@ -320,14 +333,14 @@ margin-bottom: .5rem;
                         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="gender"  id="gridRadios1" value="option1" >
+                            <input class="form-check-input" type="radio" formControlName="gender"  id="gridRadios1" value="Male" >
 
                             <label class="form-check-label" for="gridRadios1">
                               Male                      </label>
 
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio"  formControlName="gender"  id="gridRadios2" value="option2">
+                            <input class="form-check-input" type="radio"  formControlName="gender"  id="gridRadios2" value="Female">
                             <label class="form-check-label" for="gridRadios2">
                               Female
                             </label>
@@ -343,10 +356,8 @@ margin-bottom: .5rem;
 
                       <div class="form-group row">
                 </div>
-                  <button  type="submit" class="btn btn-primary"  style="    margin-left: 0px;
-
-              ">Submit</button>
-
+                  <button  type="submit" class="btn btn-primary"  style="    margin-left: 0px;">Submit</button>
+                  <div class="text-danger" *ngIf="this.responce">{{this.responce}} </div>
 
               </div>
             </form>

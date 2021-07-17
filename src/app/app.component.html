@@ -1,108 +1,107 @@
 <!--
 
    Bootstrap CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
- <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <title>Online Library Management</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>Online Library Management</title>
 
- <style>
-/* Navbar here */
-navbar{
- padding-left: 10px;
-}
-.navbar-brand {
- display: inline-block;
- padding-top: .3125rem;
- padding-bottom: .3125rem;
- margin-right: 2rem;
- font-size: 1.25rem;
- line-height: inherit;
- white-space: nowrap;
- padding-left: 1rem;
-}
-   /* here  navbar image */
-     img {
- vertical-align: middle;
- border-style: none;
- height: 60px;
- width: 70px;
-}
-
-/* here bgimage */
-#home{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-padding: 3px 200px;
-}
-
-#home::before{
-content: "";
-width: 100%;
-position: absolute;
-background-image: url(./assets/images/bgimg.jpg);
-height: 680px;
-z-index: -1;
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-opacity: .6;
-
-
-}
-
- </style>
+   <style>
 
 
 
-   <!-- navbar begin here -->
-   <nav class="navbar navbar-expand-xl navbar-dark bg-dark" style="    background-color: #343a40!important;
 
-   ">
-     <div id="logo"><img src="./assets/images/book.jpg"></div>
-     <a class="navbar-brand" > Library Management System</a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
+  /* here bgimage */
+  #home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3px 200px;
+  position: absolute;
+  }
 
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav mr-auto" style="  font-family: 'Baloo Bhai', cursive;">
-         <li class="nav-item active" >
-           <a class="nav-link" [routerLink]="['/home']">HOME <span class="sr-only">(current)</span></a>
-         </li>
+  #home::before{
+  content: "";
+  width: 100%;
 
-           <li class="nav-item active">
-             <a class="nav-link" [routerLink]="['/student_login']">STUDENT LOGIN<span class="sr-only">(current)</span></a>
-           </li>
-           <li class="nav-item active">
-             <a class="nav-link" [routerLink]="['/admin_login']">ADMIN LOGIN <span class="sr-only">(current)</span></a>
-          </li>
+  background-image: url(./assets/images/bgimg.jpg);
+  height: 680px;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: .6;
 
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['/registration']">STUDENT REGISTRATION <span class="sr-only">(current)</span></a>
-         </li>
 
-         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/admin_registration']">ADMIN REGISTRATION <span class="sr-only">(current)</span></a>
-       </li>
+  }
 
-           <li class="nav-item active">
-             <a class="nav-link" [routerLink]="['/feedback']">ABOUT US <span class="sr-only">(current)</span></a>
-           </li>
+   </style>
 
-       </ul>
-      </div>
+  <nav>
+    <span class="navbar-brand mb-0 h1" style="align-items: center; color: azure; margin: auto;font-size: 30px;
+    padding-left: 2px;
+      padding-top: 18px">Library Management</span>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
 
-     </nav>
+    <ul>
+
+
+      <li> <a class="nav-link" [routerLink]="['/home']">HOME <span class="nav-links"></span></a></li>
+      <li><a class="nav-link" [routerLink]="['/student_login']">STUDENT LOGIN<span class="nav-links"></span></a></li>
+      <li>
+        <a class="nav-link" [routerLink]="['/admin_login']">ADMIN LOGIN <span class="nav-links"></span></a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/registration']">STUDENT REGISTRATION <span class="nav-links"></span></a>
+      </li>
+      <li><a class="nav-link" [routerLink]="['/admin_registration']">ADMIN REGISTRATION <span class="nav-links"></span></a></li>
+      <li> <a class="nav-link" [routerLink]="['/feedback']">ABOUT US <span class="nav-links"></span></a></li>
+    </ul>
+
+  </nav>
+  <section></section>
+
+  <!-- <nav class="navbar">
+    <span class="navbar-toggle" id="js-navbar-toggle">
+        <i class="fas fa-bars"></i>
+    </span>
+    <a href="#" class="logo">logo</a>
+    <ul class="main-nav" id="js-menu">
+        <li>
+          <a class="nav-link" [routerLink]="['/home']">HOME <span class="nav-links">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/student_login']">STUDENT LOGIN<span class="nav-links">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/admin_login']">ADMIN LOGIN <span class="nav-links">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/registration']">STUDENT REGISTRATION <span class="nav-links">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/admin_registration']">ADMIN REGISTRATION <span class="nav-links">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/feedback']">ABOUT US <span class="nav-links">(current)</span></a>
+        </li>
+    </ul>
+  </nav> -->
 
 
 
 
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-<router-outlet></router-outlet>
+
+
+
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <router-outlet></router-outlet>

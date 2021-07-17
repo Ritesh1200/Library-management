@@ -1,4 +1,5 @@
 
+
 <style>
   navbar{
   padding-left: 10px;
@@ -27,7 +28,7 @@
   content: "";
   width: 100%;
   background-image: url(./assets/images/regis.jpg);
-  height: 120%;
+  height: 90%;
   z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,6 +36,10 @@
   opacity: .7;
   position: absolute;
 
+  }
+
+  label{
+    color: azure;
   }
 
   .container{
@@ -104,14 +109,26 @@
   max-width: 869px;
   margin-left: -146px;
   }
+
+
+
+
   }
 
-  @media (max-width: 624px){
+  /* @media (max-width: 624px){
   .h1, h1 {
   font-size: 2.5rem;
   width: 313px;
-  margin-left: -96px;
+  margin-left: -7px;
   }
+  } */
+
+  @media (max-width: 624px){
+.h1 {
+    font-size: 2.5rem;
+    width: 313px;
+    margin-left: -1px;
+}
   }
 
   @media screen and (max-width: 493px) {
@@ -130,13 +147,60 @@
   }
   }
 
+  @media screen  and (min-width:380px ){
+
+.box1{
+
+width: 52%;
+margin-left: 181px;
+height: 118%;
+box-shadow: 0px 10px 10px;
+
+}
+
+}
+@media screen  and (max-width:475px ){
+
+.box1{
+
+width: 52%;
+margin-left: 181px;
+height: 128%;
+box-shadow: 0px 10px 10px;
+
+}
+
+}
+
+@media screen and(min-width: 400px){
+h1, h2, h3, h4, h5, h6 {
+margin-top: 0;
+margin-left: -495px;
+margin-bottom: .5rem;
+}
+
+
+}
+
   @media screen  and (max-width: 1500px){
 
 
   .box{
-   height: 226%;
+   height: 125%;
+  }
+  .button{
+    margin-left: 30px;
   }
   }
+
+  @media (max-width: 624px)
+{
+.h1[_ngcontent-sdk-c49] {
+    font-size: 2.5rem;
+    width: 313px;
+    margin-left: -82px;
+}
+}
 
   </style>
       <div class="box">
@@ -144,13 +208,13 @@
         <div class="container">
         <div class="box1" style="  width: 52%;
         margin-left: 235px;
-        height: 90%;
+        height:100%;
 
       box-shadow: 0px 10px 10px;
 
      ">
 
-            <h1 class="h1"style="text-align: center; font-size: 30px; color: white; ">Student change details</h1><br>
+            <h1 class="h1"style="text-align: center; font-size: 30px; color: white; ">Registration Form</h1><br>
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" style="  font-family: 'Baloo Bhai', cursive;">
               <div class="col-sm-12">
 
@@ -177,7 +241,7 @@
                   <div *ngIf=" registrationForm.get('name').hasError('minlength')">
                     <span class="text-danger">Name is not valid</span>
                   </div>
-  <!--
+      <!--
                   <div *ngIf=" registrationForm.get('name').hasError('maxlength') || registrationForm.get('name').hasError('minlength')">
                     <span class="text-danger">Name is not valid</span>
                   </div> -->
@@ -294,7 +358,7 @@
                     </fieldset>
 
                   <button  type="submit" class="btn btn-primary"  style="    margin-left: 17px;">Submit</button>
-                  <div *ngIf="this.responce">{{this.responce}} </div>
+                  <div class="text-danger" *ngIf="this.responce">{{this.responce}} </div>
 
 
 
@@ -303,4 +367,13 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
 

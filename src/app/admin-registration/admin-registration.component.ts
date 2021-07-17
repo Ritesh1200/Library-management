@@ -22,8 +22,9 @@ export class AdminRegistrationComponent implements OnInit {
  admin_id:number;
  password:any;
  email:string="";
+ Gender:string="";
  phone_no:number;
- terms:any;
+
  constructor(private formBuilder: FormBuilder, private UserService : UserService , private router : Router) {
   this.registrationForm = this.formBuilder.group({
     name: new FormControl('', [
@@ -59,15 +60,11 @@ export class AdminRegistrationComponent implements OnInit {
     ]),
 
 
-    Gender: new FormControl('', [
+    gender: new FormControl('', [
       Validators.required
 
     ]),
 
-    Termscondition: new FormControl('', [
-      Validators.required
-
-    ]),
 
     password: new FormControl ('',[
       Validators.required,

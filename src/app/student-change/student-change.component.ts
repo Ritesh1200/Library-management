@@ -52,8 +52,8 @@ gender ;
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(20),
-      Validators.pattern(`^[A-Za-z ]+$`)]),
-
+      Validators.pattern(`^[a-zA-Z\s]{2,20}$`)
+    ]),
       student_id: new FormControl('', [
 
         Validators.required,

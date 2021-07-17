@@ -11,6 +11,8 @@ router.use(bodyparser.json()) ;
 
 // enter in database
 router.post('/' ,function(req , res , next) {
+
+  console.log("jlo------------------------------------------");
    var password = req.body.password ;
    var name = req.body.name ;
    var student_id = req.body.student_id ;
@@ -141,9 +143,10 @@ router.put('/:id' , function(req , res , next) {
    }
 
    // student name must not have special charactor
-   var nameRegEx = /^[A-Z][a-zA-Z\s]{2,20}$/
+   var nameRegEx = /^[a-zA-Z\s]{2,20}$/
    if(!nameRegEx.test(name)) {
-      return res.send({error : "please enter valid name"}) ;
+      return res.send({error:"enter valid name"}) ;
+
    }
 
    // password is too long or too short and not take special charactor (RegExp concept)

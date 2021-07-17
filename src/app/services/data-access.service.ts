@@ -76,7 +76,7 @@ export class UserService {
 
   root_url_returned = '/return' ;
   returned(id , book):Observable<any> {
-    return this.http.put<any>(this.root_url_returned + "/"+id , {book:book}) ;
+    return this.http.put<any>(this.root_url_returned + "/"+id , {book:book , return :"no"}) ;
   }
 
   root_url_book = '/book' ;
